@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if create %}
+        Создание
+    {% else %}
+        Редактирование
+    {% endif %}
+{% endblock %}
+
+{% block header %}
+    {% if create %}
+        Создание
+    {% else %}
+        Редактирование
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.time_begin.label }}<br>
+            {{ form.time_begin(class_="form-control") }}
+            {% for error in form.time_begin.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.time_end.label }}<br>
+            {{ form.time_end(class_="form-control") }}
+            {% for error in form.time_end.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.subject.label }}<br>
+            {{ form.subject(class_="form-control") }}
+            {% for error in form.subject.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.description.label }}<br>
+            {{ form.description(class_="form-control") }}
+            {% for error in form.description.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit(class = "btn") }}</p>
+    </form>
+{% endblock %}
+
+{% block nav %}
+    <a href="{{ url_for('index') }}">Список событий</a>
+{% endblock %}

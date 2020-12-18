@@ -1,0 +1,17 @@
+{% extends "base.html" %} 
+
+{% block title %}
+    Page Not Found
+{% endblock %} 
+
+{% block header %}
+    Page Not Found
+{% endblock %}
+
+{% block content %} 
+  <h1>К сожалению, такого события не существует</h1> 
+{% endblock %}
+
+{% block nav %}
+	<a href="{{ url_for('index') }}">Список событий</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+werkzeug==0.16.0
+Flask==1.1.2
+flask-wtf==0.14.2
+python-dotenv==0.15.0
+flask-sqlalchemy==2.4.4
+flask-migrate==2.5.3
+flask-login
+psycopg2
+gunicorn
+

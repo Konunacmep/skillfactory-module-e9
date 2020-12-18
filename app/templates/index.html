@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Список событий
+{% endblock %}
+
+{% block header %}
+    Список событий
+{% endblock %}
+
+{% block content %}
+    <a href="{{ url_for('create') }}" class="btn btn-primary">Создать событие</a>
+    {% for event in events %}
+        <p>Автор: {{ event.author.username }}</p>
+        <p>Время начала: {{ event.time_begin.strftime('%Y-%m-%d %H:%M') }}</p>
+        <p>Время окончания: {{ event.time_end.strftime('%Y-%m-%d %H:%M') }}</p>
+        <p>Тема: {{ event.subject }}</p>
+        <p>Описание: {{ event.description }}</p>
+        {% if current_user.id == event.user_id %}
+            <a href="{{ url_for('edit', event_id=event.id) }}" class="btn btn-primary">Редактировать</a>
+            <a href="{{ url_for('delete', event_id=event.id) }}" class="btn btn-primary">Удалить</a>
+        {% endif %}
+        <hr>
+    {% endfor %}
+{% endblock %}
+
+{% block nav %}
+{% endblock %}

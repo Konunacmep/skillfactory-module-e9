@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if log %}
+        Вход
+    {% else %}
+        Регистрация
+    {% endif %}
+{% endblock %}
+
+{% block header %}
+    {% if log %}
+        Вход
+    {% else %}
+        Регистрация
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(class_="form-control") }}
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(class_="form-control") }}
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        {% if not log %}
+            <p>
+                {{ form.password2.label }}<br>
+                {{ form.password2(class_="form-control") }}
+                {% for error in form.password2.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+        {% endif %}
+        <p>{{ form.submit(class = "btn") }}</p>
+    </form>
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
